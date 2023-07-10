@@ -77,8 +77,9 @@
           <label class="form-check-label" for="flexSwitchCheckChecked">No Flying Zone</label>
           <p style="margin-left: -43px;
           margin-top: 10px;
-          text-align: justify;"><b>Note: </b>Pleace first select the area to cover than after enable this option (Algorithm always consider the cordinate of shape as <b>NFZ</b> when this option is ebanble). Also set your parameter before enable <b>NFZ</b> option</p>
+          text-align: justify;"><b>Note: </b>Pleace set your <b>paramerters</b> before confirm <b>Start Mission </b></p>
         </div>
+        <a href=""><button class="btn btn-primary">Start Mission</button></a>
         </form>
         </div>
         <br>
@@ -191,6 +192,7 @@ $(document).ready(function() {
                  <a href="{% url 'localization' %}">
                   <button class="Localization btn btn-primary">Localize of drone</button>
                  </a>
+                 <a href="{% url 'download' %}"><button class="btn btn-primary">Download Map</button></a>
                  <!-- <br> -->
                  <br>
                  <div class="outer_div">

@@ -84,13 +84,13 @@ def localization(request):
     import cv2 as cv
     def process_source_image(source_img):
         img_bgr = cv.imread(source_img)
-        height,width=img_bgr.shape[:2]
-        img_bgr=cv2.resize(img_bgr, (int(height/4),int(width/4)))
-        img_map = cv2.imread(source_img)
-        height,width=img_map.shape[:2]
-        img_map=cv2.resize(img_map, (int(height/4),int(width/4)))
-        img_map=cv2.cvtColor(img_map,cv2.COLOR_BGR2GRAY)
-        sift = cv2.SIFT_create()
+        #height,width=img_bgr.shape[:2]
+        #img_bgr=cv2.resize(img_bgr, (int(height/4),int(width/4)))
+        img_map = cv2.imread(source_img,0)
+        #height,width=img_map.shape[:2]
+        #img_map=cv2.resize(img_map, (int(height/4),int(width/4)))
+        #img_map=cv2.cvtColor(img_map,cv2.COLOR_BGR2GRAY)
+        sift = cv2.SIFT_create(nOctaveLayers=4,contrastThreshold=0.03,edgeThreshold=10,nfeatures=0)
         keypoints_1, descriptors_1 = sift.detectAndCompute(img_map, None)
         img_draw_1 = cv2.drawKeypoints(img_map, keypoints_1, img_map, flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
         return img_bgr, img_map, keypoints_1, descriptors_1
@@ -98,8 +98,8 @@ def localization(request):
         img_of_map = cv2.imread(target_img)
         height,width=img_of_map.shape[:2]
         img_of_map=cv2.resize(img_of_map, (int(height/4),int(width/4)))
-        img_map=cv2.cvtColor(img_of_map,cv2.COLOR_BGR2GRAY)
-        sift = cv2.SIFT_create()
+        img_of_map=cv2.cvtColor(img_of_map, cv2.COLOR_BGR2GRAY)
+        sift = cv2.SIFT_create(nOctaveLayers=4,contrastThreshold=0.03,edgeThreshold=10,nfeatures=0)
         keypoints_2, descriptors_2 = sift.detectAndCompute(img_of_map, None)
         img_draw = cv2.drawKeypoints(img_of_map, keypoints_2, img_of_map,
                                     flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
@@ -127,9 +127,8 @@ def localization(request):
         midpoint_x = int((x + x + w) / 2)
         midpoint_y = int((y + y + h) / 2)
         
-        circle = cv2.circle(img_matched, (midpoint_x, midpoint_y), 6, (0, 0, 255), -1)
-        circle2=cv2.resize(circle,(500,600))
-        cv2.imshow("circle",circle2)
+        circle = cv2.circle(img_matched, (midpoint_x, midpoint_y), 4, (0, 0, 255), -1)
+        cv2.imshow("circle",circle)
         cv2.waitKey(0)
 
 
@@ -154,3 +153,6 @@ def localization(request):
     print("file path-> ", file_path)
     sift=Sift_Localization(mosaic_path, file_path)
     return render(request,"googlemaps/map.html",{'success': True})
+
+def download_image(request):
+    print("Heoolo")
