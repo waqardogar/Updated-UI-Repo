@@ -97,8 +97,8 @@
           <br>
           <input type="text" class="form-control" placeholder="127.0.0.0/Port ">
           <div class="form-check form-switch" style="margin-top: 10px;">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Live Preview Video</label>
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onchange="live_p()">
+            <!-- <label class="form-check-label" for="flexSwitchCheckDefault">Live Preview Video</label>
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onchange="live_p()"> -->
           </div>
 <br>
           <input type="text" class="form-control" placeholder="127.0.0.0:8080  ">
@@ -180,14 +180,27 @@ $(document).ready(function() {
                 </div>
               <footer class="footer ">
                <div class="tab">
+                 <!-- <button class="tablinks" onclick="openCity(event, 'Home')">Home</button> -->
                  <button class="tablinks" onclick="openCity(event, 'London')">Mapping</button>
                  <button class="tablinks" onclick="openCity(event, 'Paris')">Detection</button>
-                 <button class="tablinks" onclick="openCity(event, 'Tokyo')">video</button>
+                 <!-- <button class="tablinks" onclick="openCity(event, 'Tokyo')">video</button> -->
                  <div class="minimiz"><i class="fa-thin fa-square-chevron-down"></i></div>
                </div>
                <div id="London" class="tabcontent">
-                 <h3>Mapping</h3>
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam libero, sunt quisquam voluptas doloremque cupiditate molestiae nemo id nesciunt? Saepe similique in laudantium cumque eos a dolorem magnam nulla ut.</p>
+                 <!-- <h3>Mapping</h3> -->
+                 <a href="{% url 'localization' %}">
+                  <button class="Localization btn btn-primary">Localize of drone</button>
+                 </a>
+                 <!-- <br> -->
+                 <br>
+                 <div class="outer_div">
+                 <img src="{% static map_path %}" alt="#"></div>
+                
+
+               </div>
+               <div id="Home" class="tabcontent">
+                 <h3>Detection</h3>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium asperiores, eius inventore necessitatibus cumque quasi ipsa, amet blanditiis voluptatibus eligendi fuga nemo atque quo. Eos ipsam earum repudiandae odit delectus.</p> 
                </div>
                <div id="Paris" class="tabcontent">
                  <h3>Detection</h3>

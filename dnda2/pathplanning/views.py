@@ -145,6 +145,7 @@ def pathplanning(request):
                 x,y = path3[i]
                 lat_lng = pp(x,y,inverse=True)
                 final_path_with_lat_lng.append(lat_lng)       
+    print(final_path_with_lat_lng)
     import json
     path_geojson = {
     "type": "Feature",

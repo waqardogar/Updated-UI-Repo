@@ -178,11 +178,11 @@ def build_mosaic(raw_image_list, save_mosaic_dir, mosaic_base_name,
         # print(f'Current reprojection error {cur_error}')
         avg_repro_error.append(cur_error)
     mosaic_saved_path = f"{save_mosaic_dir}.png"
-    print(mosaic_saved_path)
+    print("Mosaic new saved directory",mosaic_saved_path)
     # if flag_save:
     cv2.imwrite(mosaic_saved_path, stitched_mosaic)
-    cv2.imshow('stitched_mosaic', stitched_mosaic)
-    cv2.waitKey(0)   
+    # cv2.imshow('stitched_mosaic', stitched_mosaic)
+    # cv2.waitKey(0)   
     return avg_repro_error,mosaic_saved_path
 
 
